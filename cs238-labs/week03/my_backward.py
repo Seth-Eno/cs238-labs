@@ -6,7 +6,7 @@ predict whether the model can spell it backward, then run:
 """
 from genai import ask, tokenize
 
-word = "photosynthesis"                                       # ← your word
+word = "stochastic"                                       # ← your word
 
 # The model to test. For Part B, change it to "qwen3.5:0.8b" or "llama3.2:latest".
 MODEL = "gemma4:latest"                                   # ← change for Part B

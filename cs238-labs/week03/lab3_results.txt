@@ -10,13 +10,21 @@ answers on what you actually saw in this lab.
    model reliably count the letters in "strawberry"?
 
 Guesses:
-    "Seth" -> Se | th
-    "Stochastic" -> Sto | ch | astic
-    "earth", -> earth
-    "👾",  -> ���
+"Seth" -> Se | th
+"Stochastic" -> Sto | ch | astic
+"earth", -> earth
+"👾",  -> ���
 
 Reality:
-   
+Seth                           2 tokens:  S | eth
+Stochastic                     2 tokens:  St | ochastic
+earth                          1 token:  earth
+👾                              3 tokens:  � | � | �
+
+Earth and 👾 split the way I thought they would. I was suprised "ochastic" was common enough to be a token.
+Gemma could not spell stochastic backward.
+The model cannot reliably count the letters in strawberry because it can only see a few letters at any given time. It has no memory or lookahead.
+
 
 
 2. Other models on letters (Task 2B): Did qwen3.5:0.8b give the same letter
