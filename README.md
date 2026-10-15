@@ -141,7 +141,7 @@ The models each lab uses are all on the class server; the optional extras may no
 |---|---|---|---|---|
 | 1 | Sep 29 & Oct 1 | The Prediction Machine | `gemma4` (10 GB), `llama3.2` (2 GB) | `llama3.2:1b` (1.3 GB) |
 | 2 | Oct 6 & 8 | Prompting | `gemma4`, `llama3.2` | |
-| 3 | Oct 13 & 15 | Tokens | `gemma4` | |
+| 3 | Oct 13 & 15 | Tokens | `gemma4`, `qwen3.5:0.8b` (1.3 GB), `llama3.2` | |
 | 4 | Oct 20 & 22 | Semantics | `nomic-embed-text` (0.3 GB) | `gemma4` |
 | 5 | Oct 27 & 29 | Retrieval-Augmented Generation | `gemma4`, `nomic-embed-text` | |
 | 6 | Nov 3 & 5 | Giving the Model Hands | `gemma4` | `qwen3` (5.2 GB), `llama3.2` |
