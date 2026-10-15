@@ -1,0 +1,18 @@
+Names: (your name and your lab partner's name)
+Lab: Week 1 (The Prediction Machine)
+Date:
+
+Answer without using GenAI. There's no right or wrong answer; base your
+answers on what you actually saw in this lab.
+
+1. Warm-up (Task 0) and your review (Task 1): How did the answer to "What
+   does generative mean?" change across your three runs? What was your
+   hard-to-label review, and did the model label it correctly?
+
+
+
+2. Peaked vs. spread (Task 2): What were your two prompts? What did you
+   predict, what were the actual top candidates, and were you right?
+
+
+

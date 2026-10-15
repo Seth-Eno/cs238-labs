@@ -1,0 +1,43 @@
+Names: (your name and your lab partner's name)
+Lab: Week 3 (Tokens)
+Date:
+
+Answer without using GenAI. There's no right or wrong answer; base your
+answers on what you actually saw in this lab.
+
+1. Tokens (Tasks 1 and 2): Which of your strings split the way you guessed,
+   and which surprised you? Could gemma4 spell your word backward? Why can't a
+   model reliably count the letters in "strawberry"?
+
+
+
+2. Other models on letters (Task 2B): Did qwen3.5:0.8b give the same letter
+   count twice in a row? Could it reverse a short word like "cat"? Did
+   llama3.2 do better on short words or long ones? Which of the three models
+   was best at letters?
+
+
+
+3. Numbers (Task 3): What did gemma4 answer for 3947 × 6281, and how do the
+   three-digit chunks explain the mistake? Which of your own problems did it
+   get right, and which did it miss? Where did the decimal point go in its
+   answer to 98,765 ÷ 43?
+
+
+
+4. Other models on numbers (Task 3B): Did qwen3.5:0.8b get 47 + 38 right
+   every time you ran it? How close did llama3.2 get on 123,456,789 +
+   987,654,321 and on the division, and was it ever exactly right? Which
+   model did best on your own problems? Why might a model land close to the
+   right answer without getting it exactly?
+
+
+
+5. Is it the tokenizer? (the chapter's Exercise 2): For each of these tasks,
+   decide whether tokenization is the reason a model finds it hard, and say
+   why in one sentence: counting the letters in a word, rhyming two words,
+   dividing two very long numbers. Is getting arithmetic wrong a failure of
+   perception or of reasoning?
+
+
+
