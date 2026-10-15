@@ -82,9 +82,14 @@ The class server is shared, so please follow the [server guidelines](https://git
    ```bash
    git pull
    ```
+   **Or, in VS Code:** open your `cs238` folder (File → Open Folder), then open the Command Palette (Ctrl+Shift+P), type `Git: Pull`, and press Enter. You can also click the Source Control icon on the left (Ctrl+Shift+G), open the `···` menu, and choose **Pull**. If it lists more than one repository, pick `cs238-labs`.
 2. Install anything new the labs need (it's quick when nothing has changed):
    ```bash
    uv add -r requirements.txt
+   ```
+   If you pulled in VS Code, open its terminal (Terminal → New Terminal), which starts in your `cs238` folder, and run this instead:
+   ```bash
+   uv add -r cs238-labs/requirements.txt
    ```
 3. Go into the week's folder and follow its `README.md`. For example:
    ```bash
@@ -136,13 +141,13 @@ The models each lab uses are all on the class server; the optional extras may no
 |---|---|---|---|---|
 | 1 | Sep 29 & Oct 1 | The Prediction Machine | `gemma4` (10 GB), `llama3.2` (2 GB) | `llama3.2:1b` (1.3 GB) |
 | 2 | Oct 6 & 8 | Prompting | `gemma4`, `llama3.2` | |
-| 3 | Oct 13 & 15 | Tokens and Meaning | `gemma4`, `nomic-embed-text` (0.3 GB) | |
-| 4 | Oct 20 & 22 | Metacoding | `qwen2.5-coder` (4.7 GB), `deepseek-coder` (0.8 GB), `nomic-embed-text` | `codellama` (3.8 GB) |
+| 3 | Oct 13 & 15 | Tokens | `gemma4` | |
+| 4 | Oct 20 & 22 | Semantics | `nomic-embed-text` (0.3 GB) | `gemma4` |
 | 5 | Oct 27 & 29 | Retrieval-Augmented Generation | `gemma4`, `nomic-embed-text` | |
 | 6 | Nov 3 & 5 | Giving the Model Hands | `gemma4` | `qwen3` (5.2 GB), `llama3.2` |
-| 7 | Nov 10 & 12 | Thinking Models | `qwen3:4b` (2.5 GB), `qwen2.5-coder` | `deepseek-r1` (5 GB) |
+| 7 | Nov 10 & 12 | Thinking Models | `qwen3:4b` (2.5 GB), `qwen2.5-coder` (4.7 GB) | `deepseek-r1` (5 GB) |
 | 8 | Nov 17 & 19 | Giving the Model Eyes | `gemma4` | `llava` (4.7 GB) |
 | 9 | Nov 24 | Where Did the Time Go? | **runs on your own laptop:** `llama3.2`, `llama3.2:1b`, `qwen3:4b` | `llama3.2:1b-instruct-q4_K_M`, `-q8_0`, `-fp16` |
 | 10 | Dec 1 & 3 | Break It, Then Guard It | `gemma4:e2b` (4.6 GB), `gemma4`, `llama3.2`, `nomic-embed-text` | |
 
-A few labs also download smaller models to your laptop the first time they run (tokenizers in Week 3, a code-embedding model in Week 4). Each lab says when.
+A few optional exercises also download a model to your laptop the first time they run (BERT in Week 1, for example). Each lab says when.

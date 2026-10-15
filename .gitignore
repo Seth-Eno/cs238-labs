@@ -1,5 +1,4 @@
 # Charts and files the lab scripts write
 *.png
-week04/*_reply.txt
 __pycache__/
 .DS_Store
