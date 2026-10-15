@@ -1,4 +1,0 @@
-# Charts and files the lab scripts write
-*.png
-__pycache__/
-.DS_Store

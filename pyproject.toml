@@ -1,0 +1,22 @@
+[project]
+name = "cs238"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Fishflopper", email = "seth.eno@coronastreet.net" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "illustrating-genai-examples",
+]
+
+[project.scripts]
+cs238 = "cs238:main"
+
+[build-system]
+requires = ["uv_build>=0.12.24,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv.sources]
+illustrating-genai-examples = { git = "https://github.com/abuach/illustrating-genai-examples" }
