@@ -11,10 +11,10 @@ def pieces(text):
     return " | ".join(t.replace(" ", "·") for t in tokenize(text))
 
 mine = [
-    "Chiké",                       # ← your name
-    "photosynthesis",              # ← a long term from your major
-    "house",                       # ← a common English word
-    "🎸",                          # ← an emoji
+    "Seth",                       # ← your name
+    "Stochastic",              # ← a long term from your major
+    "earth",                       # ← a common English word
+    "👾",                          # ← an emoji
 ]
 
 print("How GPT-4's tokenizer splits your words into tokens.")

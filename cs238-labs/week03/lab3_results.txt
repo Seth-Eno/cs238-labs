@@ -1,6 +1,6 @@
-Names: (your name and your lab partner's name)
+Names: Seth Eno
 Lab: Week 3 (Tokens)
-Date:
+Date: 10/15/2026
 
 Answer without using GenAI. There's no right or wrong answer; base your
 answers on what you actually saw in this lab.
@@ -9,6 +9,14 @@ answers on what you actually saw in this lab.
    and which surprised you? Could gemma4 spell your word backward? Why can't a
    model reliably count the letters in "strawberry"?
 
+Guesses:
+    "Seth" -> Se | th
+    "Stochastic" -> Sto | ch | astic
+    "earth", -> earth
+    "👾",  -> ���
+
+Reality:
+   
 
 
 2. Other models on letters (Task 2B): Did qwen3.5:0.8b give the same letter
