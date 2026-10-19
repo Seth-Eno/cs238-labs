@@ -14,13 +14,13 @@ problems = [
     (3947, "*", 6281),
     (123456789, "+", 987654321),
     (98765, "/", 43),
-    (12, "*", 12),                                        # ← your problems
-    (1000, "-", 1),                                       # ← your problems
-    (250, "/", 8),                                        # ← your problems
+    (99, "*", 99),                                        # ← your problems
+    (1243, "-", 1),                                       # ← your problems
+    (250, "/", 1234),                                        # ← your problems
 ]
 
 # The model to test. For Part B, change it to "qwen3.5:0.8b" or "llama3.2:latest".
-MODEL = "gemma4:latest"                                   # ← change for Part B
+MODEL = "llama3.2:latest"                                   # ← change for Part B
 
 def solve(a, op, b):
     """Python does the arithmetic exactly, digit by digit."""

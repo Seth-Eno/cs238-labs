@@ -6,7 +6,7 @@ import re
 from genai import ask, tokenize
 
 # The model to test. For Part B, change it to "qwen3.5:0.8b" or "llama3.2:latest".
-MODEL = "gemma4:latest"                                   # ← change for Part B
+MODEL = "qwen3.5:0.8b"                                   # ← change for Part B
 
 # Numbers chunk three digits from the left, not by place value
 print("How GPT-4's tokenizer splits numbers into tokens (separated by | ):\n")

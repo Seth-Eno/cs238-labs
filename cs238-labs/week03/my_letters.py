@@ -38,7 +38,7 @@ for word, letter in [("strawberry", "r"), ("mississippi", "s"),
     print(f"   The model says:   {reply}")
     print(f"   The real answer:  {correct}  (the model is {verdict})\n")
 
-word = "tokenization"
+word = "cat"
 backward = ask(f"Spell the word '{word}' backward. Reply with only the "
                "backward spelling.", model=MODEL, max_tokens=30).strip()
 answer = word[::-1]

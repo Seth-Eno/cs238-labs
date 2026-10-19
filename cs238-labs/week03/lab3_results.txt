@@ -32,12 +32,22 @@ The model cannot reliably count the letters in strawberry because it can only se
    llama3.2 do better on short words or long ones? Which of the three models
    was best at letters?
 
+No, it guessed 5 for strawberry, 10 for mississippi, and 7 for parallel.
+qwen3.5:0.8b reversed cat to tateca.
+llama3.2 did better on short words/
+gemma4 was best at letters, it got all 3 correct.
+
 
 
 3. Numbers (Task 3): What did gemma4 answer for 3947 × 6281, and how do the
    three-digit chunks explain the mistake? Which of your own problems did it
    get right, and which did it miss? Where did the decimal point go in its
    answer to 98,765 ÷ 43?
+
+gemma4 answered 24821687
+Because the model can only see 3 digits at a time the most it can multiply are 947*628.
+It got all 3 of my problems correct: (250 / 1,234), (1,243 - 1), and (99 * 99).
+The decimal point went after 229 instead of after 2296 like it was upposed to.
 
 
 
@@ -47,6 +57,11 @@ The model cannot reliably count the letters in strawberry because it can only se
    model did best on your own problems? Why might a model land close to the
    right answer without getting it exactly?
 
+No, qwen3.5:0.8b did not get 47 + 38 right every time I ran it.
+llama3.2 was correct on addition, and off by 6.86 on the division.
+It was never exactly right.
+All three models got all my problems correct even though I expected them to get 250 / 1,234 wrong.
+A model might get close because it has most of the digits of the numbers, especially the smaller ones.
 
 
 5. Is it the tokenizer? (the chapter's Exercise 2): For each of these tasks,
@@ -55,5 +70,8 @@ The model cannot reliably count the letters in strawberry because it can only se
    dividing two very long numbers. Is getting arithmetic wrong a failure of
    perception or of reasoning?
 
-
+counting the letters in a word: Yes because it fails to count how many of the letter occured in each token and just guesses based on the last one.
+rhyming two words: No because the last syllable of a word is unlikely to be spread across multiple tokens causing problems.
+dividing two very long numbers: Yes because the model may not be able to do the division algorithm with fused 3 digit numbers.
+A failure of reasoning. For example the column multiplication algorithm requires each digit to be in its own chunk. If you were to create a different chunking compatable algorithm, the model could do it.
 
