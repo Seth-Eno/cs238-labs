@@ -1,0 +1,30 @@
+Names: (your name and your lab partner's name)
+Lab: Week 4 (Semantics)
+Date:
+
+Answer without using GenAI. There's no right or wrong answer; base your
+answers on what you actually saw in this lab.
+
+1. Meaning versus words (Task 1): What were your two pairs, and how did the
+   word-overlap and embedding scores compare? Which of your predictions was
+   furthest off?
+
+
+
+2. Opposites (Tasks 2 and 3): In a sentence or two, explain why "rich" and
+   "poor" sit close together in embedding space, and why "opposite" isn't a
+   single direction the way "gender" is.
+
+
+
+3. Sentences (Task 4): What does reading a whole sentence at once give an
+   embedding that averaging its words doesn't? Did it fully solve word order?
+
+
+
+4. Search (Task 5): What query fooled your search, and what did it return?
+   Where would you add a plain keyword check to catch what the embeddings
+   blur together?
+
+
+
