@@ -14,10 +14,10 @@ def word_overlap(a, b):
     words_b = set(re.findall(r"[a-z']+", b.lower()))
     return len(words_a & words_b) / len(words_a | words_b)
 
-same_meaning = ("The meeting got pushed to next week",              # ← yours
-                "We postponed our appointment by seven days")       # ← yours
-same_words = ("The dog chased the mail carrier",                    # ← yours
-              "The mail carrier chased the dog")                    # ← yours
+same_meaning = ("I drove to the mountains to camp",
+                "I used an automobile to transport myself to an alpine location to spend the night")
+same_words = ("I drive to the mountains to hike",
+              "I hike to the mountains to drive")
 
 print("Two ways to score how alike two sentences are, both from 0 to 1:")
 print("  Word overlap:  the share of words they have in common.")

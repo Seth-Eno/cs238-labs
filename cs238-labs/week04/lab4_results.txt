@@ -9,7 +9,24 @@ answers on what you actually saw in this lab.
    word-overlap and embedding scores compare? Which of your predictions was
    furthest off?
 
+Pair 1:
+A. I drove to the mountains to camp.
+B. I used an automobile to transport myself to an alpine location to spend the night.
+Predicted word-overlap: 0.20
+Predicted embedding scores: 0.75
+actual word-overlap: 0.2
+actual embedding scores: 0.734
 
+Pair 2:
+A. I drive to the mountains to hike.
+B. I hike to the mountains to drive.
+Predicted word-overlap: 1.0
+Predicted embedding scores: 0.6
+actual word-overlap: 1.0
+actual embedding scores: 0.973
+
+In pair 1, word-overlap was low and embedding was high. In pair 2, word-overlap was maxed and embedding was very high.
+I predicted a much lower embedding score than reality for pair 2. I suppose the sentence meanings can be different while still being very similar in conversation topic.
 
 2. Opposites (Tasks 2 and 3): In a sentence or two, explain why "rich" and
    "poor" sit close together in embedding space, and why "opposite" isn't a
