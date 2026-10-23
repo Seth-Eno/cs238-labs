@@ -7,15 +7,15 @@ topics, then set the two queries on the marked lines. Run:
 from genai import semantic_search
 
 corpus = [                                                   # ← your sentences
-    "The Seahawks won in overtime on a last-second field goal",
-    "Our soccer team practices twice a week at the park",
-    "Sourdough needs a starter that has been fed for days",
-    "The croissants came out flaky and golden",
-    "Our cat naps in the sunniest spot in the house",
-    "The puppy chewed through another shoe this morning",
+    "A swing and a miss",
+    "He hits it out of the park",
+    "Fruit bats use echolocation to eat bugs",
+    "Don't go in the cave, you might get bit",
+    "I popped a tire on my bike",
+    "Want to go for a ride this afternoon",
 ]
-finds_it = "bread baking"                                    # ← your query
-fools_it = "football club"                                   # ← your tricky query
+finds_it = "Mathematics"                                    # ← your query
+fools_it = "disks"                                   # ← your tricky query
 
 print("Searching your sentences by meaning, not by matching words.")
 for kind, query in [("your query", finds_it), ("your tricky query", fools_it)]:

@@ -25,19 +25,27 @@ Predicted embedding scores: 0.6
 actual word-overlap: 1.0
 actual embedding scores: 0.973
 
-In pair 1, word-overlap was low and embedding was high. In pair 2, word-overlap was maxed and embedding was very high.
-I predicted a much lower embedding score than reality for pair 2. I suppose the sentence meanings can be different while still being very similar in conversation topic.
+In pair 1, word-overlap was low and embedding was high. 
+In pair 2, word-overlap was maxed and embedding was very high.
+I predicted a much lower embedding score than reality for pair 2.
+I suppose the sentence meanings can be different while still being similar in conversation topic.
 
 2. Opposites (Tasks 2 and 3): In a sentence or two, explain why "rich" and
    "poor" sit close together in embedding space, and why "opposite" isn't a
    single direction the way "gender" is.
 
+Opposites tend to sit close together because they are often used in the same kinds of sentences..
+For example, happy and sad mean the opposite, but they are very similar under the relationship emotions.
+Happy and sad would both be used in sentences which describe emotions.
 
 
 3. Sentences (Task 4): What does reading a whole sentence at once give an
    embedding that averaging its words doesn't? Did it fully solve word order?
 
-
+It gives context so the model can tell the differences in meaning of the sentence.
+Averaging blends high scores for opposites in the sentence which change the sentence meaning.
+It did not fully solve word order as even with reading the whole sentence the model thought they were similar,
+just less similar than with averaging.
 
 4. Search (Task 5): What query fooled your search, and what did it return?
    Where would you add a plain keyword check to catch what the embeddings
