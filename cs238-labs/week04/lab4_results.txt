@@ -51,5 +51,16 @@ just less similar than with averaging.
    Where would you add a plain keyword check to catch what the embeddings
    blur together?
 
+The 3 closest sentences to your query, 'baseball':
+   1. He hit the ball
+   2. strike out
+   3. What uses echolocation to eat bugs?
 
+The 3 closest sentences to your tricky query, 'flying bat':
+   1. He hit the ball
+   2. strike out
+   3. What uses echolocation to eat bugs?
+
+Flying bat returned he hit the ball, not what uses echolocation to catch bugs.
+I would add a keyword check to distinguish between baseball bats and flying bats.
 
