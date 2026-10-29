@@ -1,0 +1,34 @@
+Names: (your name and your lab partner's name)
+Lab: Week 5 (Break It, Then Guard It)
+Date:
+
+Answer without using GenAI. There's no right or wrong answer; base your
+answers on what you actually saw in this lab.
+
+1. Your attack (Tasks 1 and 1B): What was your reframing, and did it beat
+   the naive build, the hardened build, and the keyword filter? Did it still
+   work on the bigger gemma4:latest? What does this tell you about trying to
+   list every bad phrase?
+
+
+
+2. Structural defense (Tasks 1 and 2): The chapter says "the only defense
+   that truly holds is structural": keep the secret out of the model's context
+   entirely. Explain why no wording, however clever, can extract a secret the
+   model never saw.
+
+
+
+3. Leaks nobody typed (Task 3): Of the three leaks (memorization, the
+   embedding leak, and poisoning), which one surprised you most, and why? Why
+   would the models that are best at following examples be the most fooled by
+   poisoned ones?
+
+
+
+4. Memorization (Task 4): Which lines did you try, and how sure was the model
+   of each? Why is a model that recites its training text word for word a
+   privacy risk?
+
+
+
