@@ -1,0 +1,43 @@
+CS238 · Fall 2026 · Walla Walla University
+
+Intro to Generative AI
+
+A ten-week, hands-on introduction to how language models work and what to build with them, taught on open models running on your own laptop. No coding or math background required.
+
+The course follows the instructor's textbook, Illustrating Generative AI , chapter by chapter, with a hands-on lab each week. Students from every major are welcome, and no coding or math background is needed.
+
+Tuesdays and Thursdays, 1:00–1:50 pm, in KRH 327, fall quarter 2026 (September 28 to December 11). No class on Thanksgiving, November 26.
+
+Chiké Abuah · chike.abuah@wallawalla.edu Office hours Mondays and Thursdays, 2:00–3:00 pm, in KRH 329. Email any time; I'm open to feedback about the course at any point.
+
+A laptop that can run Ollama (8 GB of RAM is workable; 16 GB is comfortable), Python with uv Week 1's lab walks through setup. For heavier models, a shared class server is available under the server guidelines .
+
+Labs are in the cs238-labs repository , released week by week. Quizzes, grades, and the textbook are on D2L Brightspace
+
+Illustrating Generative AI by Chiké Abuah. The course follows its chapters in order. The book is posted on D2L for enrolled students as weekly readings (listed in the schedule): one chapter a week; each chapter is a runnable notebook, code and real output side by side. The readings are copyrighted and provided for your own use in this course only; please don't share, post, or distribute them.
+
+One deck and one lab per week, released as the quarter goes. Labs are written to run on your own Ollama; each ends with reflection questions and a submission checklist.
+
+Ollama for local models (the course uses gemma4 , qwen2.5-coder , qwen3 , deepseek-r1 , qwen3-vl , and nomic-embed-text ), uv for Python, and the book's companion library, genai , that every lab imports. Models run on the class server, ollama2.cs.wallawalla.edu .
+
+Ten weeks, one topic each. Each week's reading is on D2L. Quizzes are on Tuesday mornings on D2L, and cover the previous week's reading and lab.
+
+Dates are subject to change; announcements on D2L take precedence. Thanksgiving is Thursday, November 26; week 9 meets on Tuesday only.
+
+Labs 30% Quizzes 40% Attendance 30%
+
+One per week, done in class and finished on your own, kept in the cs238-labs repository (clone it once, git pull each week), and submitted as a text file on D2L. Reflection questions are answered in your own words, without a model.
+
+Ten short quizzes on D2L, ten auto-graded questions each. Quizzes 1 to 9 are on Tuesday mornings before class, cover the previous week's reading, lecture, and lab, and allow one fifteen-minute attempt. Quiz 10 covers week 10 and is an open-book quiz done as homework outside class.
+
+Class meets twice a week and much of the work happens there. Attendance counts for 30% of the grade; let me know ahead of time when you have to miss.
+
+Late work may be accepted, but you must make arrangements with me first. If you need to turn something in late, for any reason, email me before the deadline .
+
+This is a course about generative AI, and using it is expected. Two lines don't move: reflection questions are yours, written without a model; and every line of code you submit is yours to explain. Say which assistant you used and what for.
+
+Collaboration on high-level ideas and approach is encouraged; copying someone else's work is not allowed, and any collaboration must be declared at the top of the submission. Academic misconduct is handled under Walla Walla University's academic integrity policy.
+
+Lecture days are device-free: laptops closed, phones away, unless an accommodation says otherwise. Lab days are the exception, since the labs are the point of having a laptop. The reason is other people, not you: in a controlled experiment, students who could see a classmate multitasking on a laptop scored lower on the lecture material even though they weren't using one themselves (Sana, Weston, and Cepeda, 2013), and later work found that a peer's inattention spreads to the students around them, lowering their attention, note-taking, and quiz scores, even when the inattentive student sits behind them (Forrin et al., 2021, 2026; Eder, 1982). If you need a device to learn, talk to me and it's fine.
+
+Students who need accommodations should contact Disability Support Services ( DSS@wallawalla.edu , 509-527-2366) and submit a request in the first two weeks of the quarter. Accommodations aren't retroactive, so let me know early and we'll make arrangements.

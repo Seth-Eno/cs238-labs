@@ -1,0 +1,33 @@
+Names: (your name and your lab partner's name)
+Lab: Week 7 (Giving the Model Hands)
+Date:
+
+Answer without using GenAI. There's no right or wrong answer; base your
+answers on what you actually saw in this lab.
+
+1. The loop (Tasks 1 and 2): In your own words, who actually runs a tool: the
+   model or your program? What tool did you build, and did the model use it
+   correctly on all three of your requests?
+
+
+
+2. Labels (Task 3): In which versions did the model pass the right date
+   format on the first try, and in which did it need the error message to
+   recover? If you were writing tools for a real assistant, what would you
+   make sure every description and every error message says?
+
+
+
+3. Self-checks (Task 4): What confidence scores did your impossible questions
+   get? Would you trust this model's confidence score enough to automatically
+   hide answers it rates 1 or 2? Why or why not?
+
+
+
+4. Reflection: The chapter's recurring lesson is that "there's no best model,
+   only best-at-something models." What's one thing you'd want to test before
+   letting a model take real actions (sending email, spending money) on your
+   behalf?
+
+
+

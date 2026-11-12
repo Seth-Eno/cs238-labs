@@ -12,9 +12,9 @@ from genai import get_host
 MODEL = "llama3.2:latest"
 
 lines = [
-    ("famous",  "Four score and seven years"),                    # ← yours
-    ("famous",  "Ask not what your country can do for"),          # ← yours
-    ("made up", "The purple calculator whispered to the"),        # ← one you made up
+    ("famous",  "We do it not because it is easy, but because"),                    # ← yours
+    ("famous",  "One small leap for man,"),          # ← yours
+    ("made up", "An assumption makes an "),        # ← one you made up
 ]
 
 def recite(start):

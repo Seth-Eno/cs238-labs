@@ -1,0 +1,41 @@
+Names: Seth Eno
+Lab: Week 6 (Retrieval-Augmented Generation)
+Date: 11/5/2026
+
+Answer without using GenAI. There's no right or wrong answer; base your
+answers on what you actually saw in this lab.
+
+1. The knowledge problem (Tasks 1 and 2): What did the model say about the
+   book without retrieval, and how did the answers change once it could
+   retrieve? What did it do on the question your two sections don't cover?
+
+Without retrieval the model just gave a generic definition of augmentation in the context of generative AI.
+With retrieval the model nearly word for word quoted two sentences from the 1st chunk. The only differences were "select" and "choose" intead of "pick" and "temperature of 0" instead of "temperature 0".
+
+
+2. Chunking (Task 3): Which chunk size worked better for the question, and
+   what went wrong with the other?
+
+Chunk size of 80 worked better. The 20 word chunk didn't have enough context to answer the question. Its response started and ended in the middle of a sentence.
+
+
+3. Dense versus keyword (Task 4): Give one query where dense search found the
+   right note and keyword search didn't. What did each method do on a
+   question no note answers, and which way of failing would you rather have
+   in a real system? Why does a real system want both (hybrid search)?
+
+Dense search found the answer to 'why is my laptop so noisy' when keyword search didn't.
+On the question with no note answers, dense search found something plausable: clear your browser chache. Keyword returned nothing. I would rather have a reasonable explanation than nothing. Although I would rather return nothing than a completely irrelevant fix.
+A real system wants both so that the dense search can find near matches, but keyword keeps it from hallucinating an irrelevant response to a questions that are not even similar to a training issue.
+
+
+4. Grounding (Task 5): How many of your five syllabus questions did it get
+   right? Did any answer cite a source that didn't actually support it?
+   Grounding reduces hallucination; based on what you saw, why doesn't it
+   eliminate it?
+
+The model got 4/5 correct.
+Yes, the model cited a source that didn't support it's answer. I asked what am I allowed to use AI on. The model said work may be accepted if I use AI on it, but it cited the late work acceptance policy.
+Grounding doesn't always eliminate hallucination because sometimes a question's answer might be close enough to the data verified by RAG that the model counts it as verified, even though it's wrong. In my case late work acceptance and AI use acceptance are similar, so the model hallucinated an answer instead of saying the sources didn't contain the answer.
+
+

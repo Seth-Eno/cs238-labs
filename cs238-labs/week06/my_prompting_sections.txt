@@ -1,0 +1,127 @@
+The Control Panel: Model Parameters
+
+Before we go deeper on prompts themselves, we need to understand the settings that control how a model generates text. Back in the Introduction we watched the model lay out its forecast for the next word; the settings on this panel decide how it draws from that forecast.
+
+Temperature: How Adventurous Are We?
+
+Temperature controls how willing the model is to pick less likely words. At temperature 0, it always picks the single most probable next word, a strategy researchers call greedy decoding because the model just takes the highest-probability token at every step and commits to it. At higher temperatures, it starts considering less likely options, which produces more varied and creative output. Too high, and the output turns into AI slop, as we'll see later on.
+
+If you run this a few times, the pattern becomes clear. At temperature 0 the opening is locked in. At 0.7 we land in the same dusty attic with the same single shaft of light, just a phantom traded for a ghost and a faded portrait for a tarnished locket. By 1.5 the model is gambling, wandering off toward old libraries and distant sea brine.
+
+Across a whole engineering project, we can keep the temperature high while brainstorming so ideas vary, low during implementation where we want consistency, and somewhere in between for test cases, where a little variety helps.
+
+Recommended temperature across the phases of a software project. Open-ended phases like brainstorming live in the warm band; implementation and debugging live in the cold one.
+
+OpenAI's Codex team measured this directly, and the best temperature turned out to depend entirely on how many attempts you planned to make. When they kept a single completion, accuracy peaked at a low temperature, around 0.2. When they instead sampled a hundred candidates and kept the best one, the sweet spot jumped to around 0.8, because at that point you want the pile to be diverse and you only need one of them to be good.
+
+Later program-synthesis work found the same shape, and it's the very logic behind self-consistency, which returns in the Thinking chapter, where we deliberately sample several different reasoning paths and let our models vote on the answer.
+
+Top-K and Top-P: Narrowing the Candidate Pool
+
+Temperature changes how the model weighs its options. Top-K and Top-P change what options it considers in the first place.
+
+Top-K limits the model to the K most likely next tokens. Set K to 10 and the model only ever picks from the top 10 candidates at each step, no matter how confident or uncertain it is.
+
+Notice how little changes between the two runs. When the model is confident about a common question, the top five candidates already carry most of the weight, so opening the gate to fifty barely lets anything new through. Top-K matters on the uncertain steps, not the obvious ones.
+
+Top-P (nucleus sampling) is a bit smarter about this. Instead of a fixed count, it picks from the smallest group of tokens whose combined probability adds up to at least P. The "nucleus" part of the name just means the dense core of likely candidates, the words that together account for most of the probability mass. Top-P trims everything outside the nucleus.
+
+As we saw in the Introduction chapter, when the model is very confident, like when completing "The capital of the USA is...", the top few tokens account for almost all of the probability mass. When the model is uncertain, probability spreads out across many tokens, and Top-P expands the pool accordingly. Let's take a visual look at how these controls affect probability and choice, using the running example from the last chapter.
+
+One real next-token distribution under the two families of sampling controls: temperature reshapes the odds, top-k and top-p trim the field.
+
+Both panels show the very same five guesses, the model's real probabilities for what comes after that door. On the left, temperature never changes our options, only the odds the model gives each one: cool it to 0.5 and the front-runner man pulls away, heat it up to 1.5 and the whole field levels out so group and beautiful might get a say.
+
+On the right, top-k and top-p instead decide who is allowed in the room at all. Top-k keeps a fixed headcount, the three tallest, and draws its orange line in the same place no matter what. Top-p keeps the smallest set of words whose probabilities clear 0.9, which here means four words (highlighted in blue). That's the split in one picture: temperature changes how the model picks, while top-k and top-p change what it gets to pick from.
+
+This time the two openings really do diverge. At top_p=0.2 the model is boxed into the densest, most expected tokens, so it hands us the stock noir cliché: rain-slicked cobblestones under a flickering gaslight. At top_p=1.0 nothing gets filtered, and the model reaches past the obvious into the tail of the distribution for something stranger, an antique locket humming with silence.
+
+A low ceiling keeps the model on the safe, well-worn path, and a high one lets it consider the rarer words where the more surprising writing tends to live.
+
+Most local runtimes apply them in this order: Top-K filters to K candidates, Top-P further narrows based on cumulative probability, and temperature then reshapes whatever remains before the model draws from it.
+
+Some frameworks run temperature first instead, but the intuition holds either way: the filters decide which words are even on the table, and temperature decides how the model picks among them.
+
+The first row is the model on its best behavior. The second leaves top_k and top_p at their usual values but pushes the temperature to 2.0, and the sentence still holds together, just a touch more lyrical.
+
+The third row lifts both filters (top_k=0 lets every token compete, top_p=1.0 trims nothing) and keeps the temperature at 2.0. The result is complete wreckage: sentences that say nothing, with stray vocabulary from the model's own world ("computational", "generative", "algorithmically") surfacing in what should have been a sunny beach scene.
+
+Temperature is the accelerator, and Top-K and Top-P are the brakes. A high temperature on its own rarely produces gibberish, because the two filters are still discarding the least likely tokens before the model rolls its weighted die. Lift the filters and max out the temperature at the same time, and the long tail of barely-plausible tokens stampedes in. This is the slop the temperature section warned about.
+
+Zero-Shot and Few-Shot Prompting
+
+Examples turn out to be powerful enough to organize a whole family of prompting styles, sorted by how many examples you hand the model.
+
+Zero-Shot Prompting
+
+Zero-shot means asking the model to do something without giving it any examples. We rely entirely on what it learned during training.
+
+Zero-shot works surprisingly well for many common tasks. Modern LLMs have been trained on so much text that they've encountered most tasks before in some form. But it has limits: complex, multi-step problems will often go wrong in this mode. Also, if the task could be interpreted multiple ways, the model will pick one, and possibly not the one you wanted.
+
+Few-Shot: Learning by Example
+
+When zero-shot isn't enough, we can add a few examples. Giving the model exactly one example is called one-shot prompting, and giving it a small handful is few-shot prompting. The discovery that large models can pick up a brand-new task from just a few examples sitting in the prompt, with no retraining at all, was one of the headline results of the GPT-3 paper.
+
+Researchers have since traced this in-context learning ability down to specific attention circuits that form during training. The model doesn't learn from these examples in the training sense. Its parameters don't change, but it picks up the established pattern and continues it.
+
+A few-shot prompt is more explicit about the pattern. Three to six examples is usually the sweet spot. Too few and the pattern is ambiguous. Too many and they're redundant, wasting context window space.
+
+Let's look at a college CS professor's template for classifying student emails.
+
+The few-shot examples do the heavy lifting here: they teach the model our classification vocabulary and the expected output format without any explicit rule-writing. A few labeled examples are often enough for a simple three-class problem. Let's run the template against a small batch of new student questions.
+
+What's most important when putting together your examples? Quality beats quantity: one excellent, unambiguous example beats several mediocre ones. If your task has several types of inputs, include an example of each. Order can matter too, since some models are sensitive to which examples come first.
+
+Let's run a quick experiment to estimate the example sweet spot empirically. We hold back fifteen fresh questions the model never sees as examples, then run this same template at zero, one, two, three, four, six, and eight examples and count how many come back right. To separate what the examples teach from what the model knew already, we run the whole sweep twice: once with the label names above, and once with those three classes renamed to a department's ticket codes, Q1, Q2, and Q3, whose meaning appears nowhere in the instruction.
+
+The same fifteen questions, the same instruction, the same model, scored against the number of examples in the prompt. The only difference between the two lines is whether the label names explain themselves. The row under the axis is what the prompt costs in tokens.
+
+The blue line never moves. gemma4 reads LOGISTICS, CONCEPTUAL, and DEBUGGING, works out what they must mean, and scores 15 out of 15 before it has seen a single example. Every example we add on top of that buys nothing and costs about 16 tokens.
+
+The orange line is what few-shot prompting is really for. Rename the classes Q1, Q2, and Q3 and the same task falls to 20% cold, under the 33% that guessing between three labels would give, because nothing in the instruction says which code belongs to which kind of question. One example lifts it to 47%, two to 87%, and by the fourth it's perfect. From there the line is flat while the prompt keeps growing, 94 tokens to 161.
+
+So the examples earn their tokens for as long as they're still carrying something the instruction doesn't say. Once the model has the pattern, more of them are just an inefficient prompt.
+
+The Pink Elephant Problem
+
+Whatever you do, don't picture a pink elephant!
+
+You pictured the elephant, everyone does, and it isn't your fault. That instruction has to name the elephant to forbid it, and naming it is what paints it across the front of our minds. Psychologists call this ironic process theory.
+
+Language models have a mathematical version of the same blind spot. A negative instruction like "do not mention X" drops the word X right into the prompt, where the model reads it like every other word. The ban can lower the odds on X, but everything else in the prompt may still be pointing straight at it.
+
+The cleanest version of the trap: we ask three models a plain factual question and forbid the one word that happens to be the answer.
+
+Our most capable model, gemma4, kept its word and never typed "elephant." But notice the price it paid. It called the creature an "African bush behemoth," which isn't a real species.
+
+The two smaller models couldn't even manage that. Both of them read the ban, felt the overwhelming pull of the single most likely next word, and caved, saying "elephant" anyway. The probability of that one token was simply too high for a polite "do not" to hold them back.
+
+We can watch that happen. The model reports a probability for every candidate at every step, so we can run the same three prompts again and record how much of the model's confidence sat on "elephant" at each word it wrote.
+
+Each column is one model's sentence, running downward in the order it was written, with a bar for how much probability sat on "elephant" at that step. The header gives what the same slot reaches when we drop the ban from the prompt. A separate run from the transcript above, so the wording differs a little.
+
+gemma4's column stays flat the whole way. Even at the African bush ___, a phrase with only one natural ending, the banned word never once enters its top candidates. Drop the ban and that same slot is a dead certainty at 1.00. The instruction erased the word from contention entirely.
+
+The smaller two show the ban working and losing anyway. llama3.2:1b starts The African, and by the next word the ban has pushed "elephant" from 0.99 down to 0.33. Despite the cut, "elephant" still wins, because at temperature 0 the model writes whatever ranks first, and 0.33 still did. gemma3:1b barely registers the instruction at all, going from 0.82 to 0.81.
+
+A ban reweights the candidates and stops there. Whatever still comes out on top gets written, which is why the same instruction can erase a word from one model and merely inconvenience another.
+
+The elephant had no alias. Nothing else in English means African bush elephant, so a model that honors the ban has to invent a species or reword its way around the sentence. Star Wars sets the same trap with an escape hatch left open, since the man in the black helmet is also Anakin Skywalker, and describing him takes about four words. We put cinema's most famous family reveal to gemma4 and two models we haven't used yet, and forbid the surname.
+
+Three models, three different things to do with one ban.
+
+phi4 takes the detour. An imposing figure shrouded in a dark cloak and helmet never types the surname and never says anything false, which is what gemma4's "African bush behemoth" was reaching for and missed.
+
+mistral says the name anyway, the same collapse the pressure chart just walked us through. The ban trimmed the odds on "Vader" and "Vader" still finished on top.
+
+gemma4 honors the ban and hands back Darth Bane, an ancient and legendary Sith Lord from a thousand years before the popular films who has nothing to do with Luke's heritage. Drop the ban and all three models name Vader straight away, so gemma4 knows the answer perfectly well. Forbidding the right name knocked it out of contention, and the model reached for the nearest name it was still allowed to say.
+
+That's the second cost of a negative instruction. A ban that fails is easy to catch, since the forbidden word is sitting right there in the output. A ban that holds by swapping in a confident falsehood reads exactly like a correct answer.
+
+In both bans so far, we forbade the one word the answer hinged on. Let's retry with bans that leave a little more breathing room.
+
+Three different bans, and gemma4 honored every one. It described the ocean without ever saying "water," announced a coffee maker without "coffee" or "machine," and in the last line wrote a whole cheerful sentence without once using the letter "e," which would tie most of us humans in knots, because "e" is the most common letter in English. It's even harder for a model than it looks: as we'll see in the next chapter, a model reads chunks of words rather than individual letters.
+
+A negative instruction is only as strong as the detour it leaves open. When a graceful way around the banned word is easy to reach, the model takes it. When it takes any digging, the way Vader's other name did, the model may settle instead for a wrong answer it's allowed to say. And when the banned word is the only truthful answer, the way it was for our elephant, the ban either bends the truth or breaks it.
+
+We can lean on a negative for a stray word or style the model can easily swap out, and prefer positives whenever the forbidden thing is hard to avoid, so "call it the gentle giant" beats "do not say elephant" every time, because it hands the model somewhere to actually go instead of just eggshells to walk on.

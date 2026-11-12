@@ -1,6 +1,6 @@
-Names: (your name and your lab partner's name)
+Names: Seth Eno
 Lab: Week 5 (Break It, Then Guard It)
-Date:
+Date: 11/2/2026
 
 Answer without using GenAI. There's no right or wrong answer; base your
 answers on what you actually saw in this lab.
@@ -20,6 +20,7 @@ It didn't beat gemma4:latest. This tells me trying to list every bad phrase is i
    entirely. Explain why no wording, however clever, can extract a secret the
    model never saw.
 
+The model answers a prompt according to its training data. The model cannot create anything it hasn't seen. 
 
 
 3. Leaks nobody typed (Task 3): Of the three leaks (memorization, the
@@ -27,11 +28,22 @@ It didn't beat gemma4:latest. This tells me trying to list every bad phrase is i
    would the models that are best at following examples be the most fooled by
    poisoned ones?
 
+Poisoning suprised me the most because I thought a bad example would be lost in the weight averaging.
+The models best at following examples are the most fooled by poisoning because they can fit your prompt very well with a poisoned example.
 
 
 4. Memorization (Task 4): Which lines did you try, and how sure was the model
    of each? Why is a model that recites its training text word for word a
    privacy risk?
 
+We do it not because it is easy, but because ...
+'it':  100%
 
+One small leap for man, ...
+'one':  100%
+
+An assumption makes an  ...
+'?':  10%
+
+A model that recites its training text word for word is a privacy risk because private information is often used as training data, and if the model recites training data, it recites private information.
 
