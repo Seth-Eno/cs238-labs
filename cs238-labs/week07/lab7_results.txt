@@ -9,12 +9,15 @@ answers on what you actually saw in this lab.
    model or your program? What tool did you build, and did the model use it
    correctly on all three of your requests?
 
+The program selects which tool to run and extracts the parameters from the user's request, then my program gives the result that the model returns.
+I built a dice rolling tool. The model did use it correctly on all three requests.
 
 
 2. Labels (Task 3): In which versions did the model pass the right date
    format on the first try, and in which did it need the error message to
    recover? If you were writing tools for a real assistant, what would you
    make sure every description and every error message says?
+
 
 
 

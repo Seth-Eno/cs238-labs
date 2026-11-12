@@ -7,6 +7,7 @@ Run from this folder:  uv run my_tool.py
 """
 from datetime import date
 from genai.agent import tool_spec, ask_sophia
+import random
 
 def days_until(target: str = "", **_):
     try:
@@ -14,24 +15,27 @@ def days_until(target: str = "", **_):
     except ValueError:
         return {"error": "use the format YYYY-MM-DD"}
 
-def count_letter(word: str = "", letter: str = "", **_):          # ← your function
-    return {"count": word.lower().count(letter.lower())}
+def roll_dice(sides: int = 0, times: int = 0, **_):          # ← your function
+    sum = 0
+    for i in range(times):
+        sum += random.randint(1, sides)
+    return {"roll": sum}
 
 tools = [
     tool_spec("days_until",
               "Count the days from today until a date given as YYYY-MM-DD.",
               target="string"),
-    tool_spec("count_letter",                                    # ← your tool's name
-              "Count how many times a letter appears in a word.",  # ← its description
-              word="string", letter="string"),                   # ← its parameters
+    tool_spec("roll_dice",                                    # ← your tool's name
+              "Roll a dice of any number of sides any number of times.",  # ← its description
+              sides="sides", times="times"),                   # ← its parameters
 ]
 handlers = {"days_until": days_until,
-            "count_letter": count_letter}                        # ← name → function
+            "roll_dice": roll_dice}                        # ← name → function
 
 requests = [                                                     # ← your three requests
-    "How many r's are in strawberry?",
-    "How many days until 2026-12-25, and how many s's are in Mississippi?",
-    "What's a good name for a goldfish?",
+    "Roll 10, 20 sided dice and give me the total",
+    "How many days until 2026-12-25, and roll 2, 6 sided dice for me.",
+    "What's your favorite crater on the moon?",
 ]
 
 print("How to read each conversation:")
